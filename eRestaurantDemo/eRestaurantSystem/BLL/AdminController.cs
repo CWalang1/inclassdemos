@@ -153,7 +153,8 @@ namespace eRestaurantSystem.BLL
             {
                 //look up the item instance on the database to determine if 
                 //the instance exists
-                SpecialEvent existing = context.SpecialEvents.Find(item);
+                //on the delete make sure you reference the PK field name
+                SpecialEvent existing = context.SpecialEvents.Find(item.EventCode);
                 //setup the delete request command 
                 context.SpecialEvents.Remove(existing);
                 //commit the action to happen
