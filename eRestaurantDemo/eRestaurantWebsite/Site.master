@@ -49,16 +49,17 @@
                     <a class="navbar-brand" runat="server" href="~/">Colton Walang</a>
                 </div>
                 <div class="navbar-collapse collapse">
-                    <ul class="nav navbar-nav">
+            <%--       <ul class="nav navbar-nav">
                         <li><a runat="server" href="~/">Home</a></li>
                         <li><a runat="server" href="~/SamplePages/SpecialEventsAdmin">Special Events</a></li>
                         <li><a runat="server" href="~/SamplePages/ListView">List View Display</a></li>
                         <li><a runat="server" href="~/SamplePages/ReservationsByDate">Special Events</a></li>
                         <li><a runat="server" href="~/SamplePages/CategoryMenuItems">Category Menu Items</a></li>
                         <li><a runat="server" href="~/CommandPages/SpecialEventsAdmin">Listview CRUD</a></li>
+                        <li><a runat="server" href="~/CommandPages/WaiterAdmin">Waiter CRUD</a></li>
                         <li><a runat="server" href="~/About">About</a></li>
                         <li><a runat="server" href="~/Contact">Contact</a></li>
-                    </ul>
+                    </ul>--%>  
                     <asp:LoginView runat="server" ViewStateMode="Disabled">
                         <AnonymousTemplate>
                             <ul class="nav navbar-nav navbar-right">
@@ -75,6 +76,33 @@
                             </ul>
                         </LoggedInTemplate>
                     </asp:LoginView>
+                    <asp:Menu ID="navMenu" runat="server" 
+                    BackColor="#000000" BorderColor="Red"
+                    StaticMenuItemStyle-ForeColor="#999999" 
+                    StaticMenuItemStyle-VerticalPadding="10px"
+                    StaticMenuItemStyle-HorizontalPadding="10px"
+                    RenderingMode="List" Orientation="Horizontal" 
+                    DynamicMenuItemStyle-ForeColor="#999999" 
+                    DynamicMenuStyle-BackColor="Black">
+                    <Items>
+                        <asp:MenuItem Text="Home" NavigateUrl="~/"></asp:MenuItem>
+
+                        <asp:MenuItem Text="DDMenu" Value="DDMenu">
+                            <asp:MenuItem Text="Special Events" NavigateUrl="~//SamplePages/SpecialEventsAdmin.aspx"></asp:MenuItem>
+                            <asp:MenuItem Text="List View" NavigateUrl="~//SamplePages/ListView.aspx"></asp:MenuItem>
+                            <asp:MenuItem Text="Reservations By Date" NavigateUrl="~//SamplePages/ReservationsByDate.aspx"></asp:MenuItem>
+                            <asp:MenuItem Text="Category Menu Items" NavigateUrl="~//SamplePages/CategoryMenuItems.aspx"></asp:MenuItem>
+                            <asp:MenuItem Text="Special Events Admin" NavigateUrl="~//CommandPages/SpecialEventsAdmin.aspx"></asp:MenuItem>
+                            <asp:MenuItem Text="Waiter Admin" NavigateUrl="~//CommandPages/WaiterAdmin.aspx"></asp:MenuItem>
+                            <asp:MenuItem Text="About Us" NavigateUrl="~/About.aspx"></asp:MenuItem>
+                            <asp:MenuItem Text="Contact Us" NavigateUrl="~/Contact.aspx"></asp:MenuItem>
+
+                        </asp:MenuItem>
+
+                        <asp:MenuItem Text="About Us" NavigateUrl="~/About.aspx"></asp:MenuItem>
+                         <asp:MenuItem Text="Contact Us" NavigateUrl="~/Contact.aspx"></asp:MenuItem>
+                    </Items>
+                </asp:Menu>
                 </div>
             </div>
         </div>
