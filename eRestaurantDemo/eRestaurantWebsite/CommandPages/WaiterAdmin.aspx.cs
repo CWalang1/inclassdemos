@@ -21,7 +21,7 @@ public partial class CommandPages_WaiterAdmin : System.Web.UI.Page
     {
         if (WaiterList.SelectedIndex == 0)
         {
-            MessageUserControl1.ShowInfo("Please select a waiter before clicking Fetch Waiter");
+            MessageUserControl.ShowInfo("Please select a waiter before clicking Fetch Waiter");
         }
         else
         {
@@ -29,7 +29,7 @@ public partial class CommandPages_WaiterAdmin : System.Web.UI.Page
             //this will capture error messages when/if they happen 
             //and properly display in the user control 
             //GetWaiterInfo is your method for accessing BLL and query
-            MessageUserControl1.TryRun((ProcessRequest)GetWaiterInfo);
+            MessageUserControl.TryRun((ProcessRequest)GetWaiterInfo);
         }
 
     }
@@ -47,6 +47,57 @@ public partial class CommandPages_WaiterAdmin : System.Web.UI.Page
         if (waiter.ReleaseDate.HasValue)
         {
             DateReleased.Text = waiter.ReleaseDate.ToString();
+        }
+    }
+    protected void Insert_Click(object sender, EventArgs e)
+    {
+        //this example is using the TryRun inline
+        MessageUserControl.TryRun(() =>
+            {
+                Waiter item = new Waiter();
+                item.FirstName = FirstName.Text;
+                item.LastName = LastName.Text;
+                item.Phone = Phone.Text;
+                item.Address = Address.Text;
+                item.HireDate = DateTime.Parse(DateHired.Text);
+                item.ReleaseDate = null;
+                AdminController sysmgr = new AdminController();
+                WaiterID.Text = sysmgr.Waiters_Add(item).ToString();
+                MessageUserControl.ShowInfo("Waiter Added");
+            }
+        );
+    }
+
+    protected void Update_Click(object sender, EventArgs e)
+    {
+        if (string.IsNullOrEmpty(WaiterID.Text))
+        {
+            MessageUserControl.ShowInfo("Please enter a value");
+        }
+        else
+        {
+            MessageUserControl.TryRun(() =>
+            {
+                Waiter item = new Waiter();
+                item.WaiterID = int.Parse(WaiterID.Text);
+                item.FirstName = FirstName.Text;
+                item.LastName = LastName.Text;
+                item.Phone = Phone.Text;
+                item.Address = Address.Text;
+                item.HireDate = DateTime.Parse(DateHired.Text);
+                if (string.IsNullOrEmpty(DateReleased.Text))
+                {
+                    item.ReleaseDate = null;
+                }
+                else
+                {
+                    item.ReleaseDate = DateTime.Parse(DateReleased.Text);
+                }
+                AdminController sysmgr = new AdminController();
+                sysmgr.Waiters_Update(item);
+                MessageUserControl.ShowInfo("Waiter Added");
+            }
+       );
         }
     }
 }

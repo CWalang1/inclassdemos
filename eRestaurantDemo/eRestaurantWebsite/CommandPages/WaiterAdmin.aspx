@@ -5,7 +5,7 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" Runat="Server">
     <h1>Waiter Admin</h1>
-    <uc1:MessageUserControl ID="MessageUserControl1" runat="server" />
+    <uc1:MessageUserControl ID="MessageUserControl" runat="server" />
     <br />
     <table align="center" style="width: 70%">
        <tr> <td><asp:DropDownList ID="WaiterList" runat="server" DataSourceID="ODSWaiters" DataTextField="FullName" DataValueField="FullName" AppendDataBoundItems="True">
@@ -62,7 +62,7 @@
         </tr>
         <tr>
             <td>
-                <asp:LinkButton ID="Insert" runat="server">Insert</asp:LinkButton>
+                <asp:LinkButton ID="Insert" runat="server" OnClick="Insert_Click">Insert</asp:LinkButton>
             </td>
             <td>
                 <asp:LinkButton ID="Update" runat="server">Update</asp:LinkButton>
