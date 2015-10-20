@@ -8,7 +8,7 @@
     <uc1:MessageUserControl ID="MessageUserControl" runat="server" />
     <br />
     <table align="center" style="width: 70%">
-       <tr> <td><asp:DropDownList ID="WaiterList" runat="server" DataSourceID="ODSWaiters" DataTextField="FullName" DataValueField="FullName" AppendDataBoundItems="True">
+       <tr> <td><asp:DropDownList ID="WaiterList" runat="server" DataSourceID="ODSWaiters" DataTextField="FullName" DataValueField="FullName">
                 </asp:DropDownList></td>
         <td><asp:LinkButton ID="FetchWaiter" runat="server">Fetch Waiter</asp:LinkButton></td>
         <asp:ObjectDataSource ID="ODSWaiters" runat="server" DataObjectTypeName="eRestaurantSystem.Entities.Waiter" DeleteMethod="Waiters_Delete" InsertMethod="Waiters_Add" OldValuesParameterFormatString="original_{0}" SelectMethod="Waiter_List" TypeName="eRestaurantSystem.BLL.AdminController" UpdateMethod="Waiters_Update"></asp:ObjectDataSource>

@@ -85,7 +85,7 @@ namespace eRestaurantSystem.BLL
             }
         }
         [DataObjectMethod(DataObjectMethodType.Select, false)]
-        public List<CategoryMenuItems> CategoryMenuItems_List()
+        public List<MenuCategoryItems> CategoryMenuItems_List()
         {
             using (var context = new eRestaurantContext())
             {
@@ -93,7 +93,7 @@ namespace eRestaurantSystem.BLL
 
                 var results = from category in context.MenuCategories
                               orderby category.Description
-                              select new CategoryMenuItems() //DTO
+                              select new MenuCategoryItems() //DTO
                               {
                                   Description = category.Description,
                                   MenuItems = from row in category.MenuItems
@@ -107,6 +107,25 @@ namespace eRestaurantSystem.BLL
                                                  }
                               };
                 return results.ToList();
+            }
+        }
+        [DataObjectMethod(DataObjectMethodType.Select, false)]
+        public List<Entities.POCOs.CategoryMenuItems> GetReportCategoryMenuItems()
+        {
+            using (eRestaurantContext context = new eRestaurantContext())
+            {
+                var results = from cat in context.Items
+                              orderby cat.Category.Description, cat.Description
+                              select new Entities.POCOs.CategoryMenuItems
+                              {
+                                  CategoryDescription = cat.Category.Description,
+                                  ItemDescription = cat.Description,
+                                  Price = cat.CurrentPrice,
+                                  Calories = cat.Calories,
+                                  Comment = cat.Comment
+                              };
+
+                return results.ToList(); // this was .Dump() in Linqpad
             }
         }
         #endregion

@@ -10,7 +10,7 @@ using System.Collections; // required by IEnumerable
 
 namespace eRestaurantSystem.Entities.DTOs
 {
-    public class CategoryMenuItems
+    public class MenuCategoryItems
     {
         public string Description { get; set; }
 
