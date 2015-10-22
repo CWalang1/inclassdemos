@@ -110,19 +110,44 @@ namespace eRestaurantSystem.BLL
             }
         }
         [DataObjectMethod(DataObjectMethodType.Select, false)]
-        public List<Entities.POCOs.CategoryMenuItems> GetReportCategoryMenuItems()
+        public List<CategoryMenuItems> GetReportCategoryMenuItems()
         {
             using (eRestaurantContext context = new eRestaurantContext())
             {
                 var results = from cat in context.Items
                               orderby cat.Category.Description, cat.Description
-                              select new Entities.POCOs.CategoryMenuItems
+                              select new CategoryMenuItems
                               {
                                   CategoryDescription = cat.Category.Description,
                                   ItemDescription = cat.Description,
                                   Price = cat.CurrentPrice,
                                   Calories = cat.Calories,
                                   Comment = cat.Comment
+                              };
+
+                return results.ToList(); // this was .Dump() in Linqpad
+            }
+        }
+
+        [DataObjectMethod(DataObjectMethodType.Select, false)]
+        public List<WaiterBilling> GetWaiterBillingReport()
+        {
+            using (eRestaurantContext context = new eRestaurantContext())
+            {
+                var results = from abillrow in context.Bills
+                              where abillrow.BillDate.Month == 5
+                              orderby abillrow.BillDate, abillrow.Waiter.LastName, abillrow.Waiter.FirstName
+                              select new WaiterBilling
+                              {
+                                  BillDate = abillrow.BillDate.Year + "/" +
+                                             abillrow.BillDate.Month + "/" +
+                                             abillrow.BillDate.Day,
+
+                                  Name = abillrow.Waiter.LastName + ", " + abillrow.Waiter.FirstName,
+                                  BillID = abillrow.BillID,
+                                  BillTotal = abillrow.Items.Sum(bitem => bitem.Quantity * bitem.SalePrice),
+                                  PartySize = abillrow.NumberInParty,
+                                  Contact = abillrow.Reservation.CustomerName
                               };
 
                 return results.ToList(); // this was .Dump() in Linqpad
