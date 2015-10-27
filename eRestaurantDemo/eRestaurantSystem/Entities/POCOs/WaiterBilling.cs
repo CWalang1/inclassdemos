@@ -8,7 +8,7 @@ namespace eRestaurantSystem.Entities.POCOs
 {
     public class WaiterBilling
     {
-        public DateTime BillDate { get; set; }
+        public string BillDate { get; set; }
         public string Name { get; set; }
         public int BillID { get; set; }
         public decimal BillTotal { get; set; }

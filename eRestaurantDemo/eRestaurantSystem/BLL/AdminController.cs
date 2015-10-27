@@ -142,7 +142,6 @@ namespace eRestaurantSystem.BLL
                                   BillDate = abillrow.BillDate.Year + "/" +
                                              abillrow.BillDate.Month + "/" +
                                              abillrow.BillDate.Day,
-
                                   Name = abillrow.Waiter.LastName + ", " + abillrow.Waiter.FirstName,
                                   BillID = abillrow.BillID,
                                   BillTotal = abillrow.Items.Sum(bitem => bitem.Quantity * bitem.SalePrice),
@@ -305,5 +304,17 @@ namespace eRestaurantSystem.BLL
         }
 
         #endregion 
+
+        #region Front Desk 
+        [DataObjectMethod(DataObjectMethodType.Select)]
+        public DateTime GetLastBillDateTime()
+        {
+            using (eRestaurantContext context = new eRestaurantContext())
+            {
+                var result = context.Bills.Max(x => x.BillDate);
+                return result;
+            }
+        }
+        #endregion
     }
 }

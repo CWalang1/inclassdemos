@@ -96,6 +96,7 @@
                             <asp:MenuItem Text="Waiter Admin" NavigateUrl="~//CommandPages/WaiterAdmin.aspx"></asp:MenuItem>
                             <asp:MenuItem Text="Menu Category Report" NavigateUrl="~//Reports/MenuCategoryItemReport.aspx"></asp:MenuItem>
                             <asp:MenuItem Text="Waiter Billing Report" NavigateUrl="~//Reports/WaiterBillingReport.aspx"></asp:MenuItem>
+                            <asp:MenuItem Text="Front Desk" NavigateUrl="~//UXPages/FrontDesk.aspx"></asp:MenuItem>
                             <asp:MenuItem Text="About Us" NavigateUrl="~/About.aspx"></asp:MenuItem>
                             <asp:MenuItem Text="Contact Us" NavigateUrl="~/Contact.aspx"></asp:MenuItem>
 
