@@ -4,6 +4,7 @@ namespace RevertSystem.DAL
     using System.Data.Entity;
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Linq;
+    using RevertSystem.Entities;
     
 
     public partial class RevertContext : DbContext

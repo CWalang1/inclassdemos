@@ -1,4 +1,4 @@
-namespace RevertSystem
+namespace RevertSystem.Entities
 {
     using System;
     using System.Collections.Generic;

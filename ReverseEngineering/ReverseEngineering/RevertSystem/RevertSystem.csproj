@@ -50,6 +50,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BLL\AdminController.cs" />
     <Compile Include="Class1.cs" />
     <Compile Include="Entities\Employee.cs" />
     <Compile Include="Entities\EmployeeSkill.cs" />
@@ -66,7 +67,6 @@
     <None Include="Entities\packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="BLL\" />
     <Folder Include="Entities\DTOs\" />
     <Folder Include="Entities\POCOs\" />
   </ItemGroup>
