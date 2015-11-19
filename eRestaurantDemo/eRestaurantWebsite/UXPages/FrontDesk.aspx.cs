@@ -19,11 +19,5 @@ public partial class UXPages_FrontDesk : System.Web.UI.Page
     {
 
     }
-    protected void MockLastBillingDateTime_Click(object sender, EventArgs e)
-    {
-        AdminController sysmgr = new AdminController();
-        DateTime info = sysmgr.GetLastBillDateTime();
-        SearchDate.Text = info.ToString("yyyy-MM-dd");
-        SearchTime.Text = info.ToString("HH:mm");
-    }
+    
 }
